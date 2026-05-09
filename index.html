@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BASE FORTE — Movimento</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Outfit:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   BASE FORTE MOVIMENTO — Premium Dark Luxury
+   Apple precision × Nike emotional power
+   ============================================================ */
+
+:root {
+  --void: #000000;
+  --deep: #080808;
+  --ink: #0f0f0f;
+  --surface: #141414;
+  --lift: #1c1c1c;
+  --border: rgba(255,255,255,0.07);
+  --border-gold: rgba(201,163,52,0.25);
+  --text: #f5f0e8;
+  --text-dim: rgba(245,240,232,0.5);
+  --text-ghost: rgba(245,240,232,0.18);
+  --gold: #c9a334;
+  --gold-bright: #e0b94a;
+  --gold-dim: rgba(201,163,52,0.12);
+  --green: #2d3d28;
+  --green-mid: #3c5235;
+  --font-display: 'DM Serif Display', Georgia, serif;
+  --font-sans: 'Outfit', system-ui, sans-serif;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.83, 0, 0.17, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background: var(--void);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── CURSOR ── */
+#cur {
+  position: fixed;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%,-50%);
+  transition: width .2s, height .2s, opacity .2s;
+  will-change: transform;
+}
+#cur-ring {
+  position: fixed;
+  width: 40px; height: 40px;
+  border: 1px solid rgba(201,163,52,.35);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9998;
+  transform: translate(-50%,-50%);
+  will-change: transform;
+  transition: width .35s var(--ease-out), height .35s var(--ease-out), border-color .35s;
+}
+body.hovering #cur-ring {
+  width: 64px; height: 64px;
+  border-color: rgba(201,163,52,.6);
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 0 48px;
+  height: 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  transition: background .6s, border-color .6s;
+}
+nav.solid {
+  background: rgba(0,0,0,.88);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border-bottom: 1px solid var(--border);
+}
+.nav-brand {
+  display: flex; flex-direction: column; gap: 1px;
+  text-decoration: none;
+}
+.nav-brand-top {
+  font-family: var(--font-sans);
+  font-weight: 800;
+  font-size: 13px;
+  letter-spacing: .28em;
+  text-transform: uppercase;
+  color: var(--text);
+  line-height: 1;
+}
+.nav-brand-sub {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 9px;
+  letter-spacing: .45em;
+  text-transform: uppercase;
+  color: var(--gold);
+  line-height: 1;
+}
+.nav-links {
+  display: flex; gap: 40px; list-style: none;
+  position: absolute; left: 50%; transform: translateX(-50%);
+}
+.nav-links a {
+  font-size: 12px; font-weight: 400;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color .3s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-cta {
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: var(--gold);
+  padding: 10px 22px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background .25s, transform .25s;
+}
+.nav-cta:hover { background: var(--gold-bright); transform: translateY(-1px); }
+
+/* ── HERO ── */
+.hero {
+  height: 100vh;
+  min-height: 680px;
+  display: grid;
+  place-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--void);
+}
+
+/* Cinematic background layers */
+.hero-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 40%, rgba(40,52,36,.5) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 80% at 80% 60%, rgba(201,163,52,.06) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(201,163,52,.04) 0%, transparent 60%);
+}
+.hero-grain {
+  position: absolute; inset: 0;
+  opacity: .55;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.08'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+}
+/* Horizontal scan lines — cinematic */
+.hero-scan {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,.07) 3px,
+    rgba(0,0,0,.07) 4px
+  );
+  pointer-events: none;
+}
+/* Large ambient letter */
+.hero-glyph {
+  position: absolute;
+  font-family: var(--font-display);
+  font-size: clamp(280px, 40vw, 580px);
+  font-weight: 400;
+  color: rgba(255,255,255,.018);
+  line-height: 1;
+  top: 50%; left: 50%;
+  transform: translate(-48%, -52%);
+  user-select: none;
+  letter-spacing: -.05em;
+  pointer-events: none;
+}
+/* Gold horizon line */
+.hero-horizon {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--gold) 30%, var(--gold) 70%, transparent 100%);
+  opacity: .3;
+}
+
+.hero-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 0 24px;
+  max-width: 1000px;
+  width: 100%;
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 14px;
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: riseIn 1.2s .2s var(--ease-out) forwards;
+}
+.hero-eyebrow::before, .hero-eyebrow::after {
+  content: '';
+  display: block;
+  width: 28px; height: 1px;
+  background: var(--gold);
+  opacity: .7;
+}
+.hero-h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 9.5vw, 128px);
+  font-weight: 400;
+  line-height: .92;
+  letter-spacing: -.025em;
+  color: var(--text);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: riseIn 1.4s .4s var(--ease-out) forwards;
+}
+.hero-h1 em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-h1 .break { display: block; }
+.hero-tagline {
+  font-size: clamp(13px, 1.4vw, 17px);
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: .06em;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: riseIn 1.2s .65s var(--ease-out) forwards;
+}
+.hero-actions {
+  display: flex; align-items: center; justify-content: center; gap: 24px;
+  opacity: 0;
+  animation: riseIn 1s .9s var(--ease-out) forwards;
+}
+.btn-fill {
+  font-size: 12px; font-weight: 600;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--void);
+  background: var(--text);
+  padding: 16px 40px;
+  text-decoration: none;
+  border-radius: 2px;
+  transition: background .25s, transform .2s;
+  border: none; cursor: none;
+}
+.btn-fill:hover { background: var(--gold); transform: translateY(-2px); }
+.btn-line {
+  font-size: 12px; font-weight: 500;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  background: transparent;
+  padding: 16px 32px;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  transition: color .25s, border-color .25s, transform .2s;
+}
+.btn-line:hover {
+  color: var(--text); border-color: rgba(255,255,255,.3);
+  transform: translateY(-2px);
+}
+
+/* Scroll cue */
+.hero-scroll-cue {
+  position: absolute; bottom: 40px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  opacity: 0; animation: fadeIn 1s 1.6s forwards;
+}
+.hero-scroll-cue span {
+  font-size: 9px; letter-spacing: .4em; text-transform: uppercase;
+  color: var(--text-ghost);
+}
+.scroll-pip {
+  width: 1px; height: 48px;
+  background: linear-gradient(180deg, var(--gold) 0%, transparent 100%);
+  animation: pipDrop 2s 1.8s ease-in-out infinite;
+}
+@keyframes pipDrop {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 1; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; }
+}
+
+/* ── METRICS STRIP ── */
+.strip {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+}
+.strip-item {
+  flex: 1;
+  padding: 40px 0;
+  text-align: center;
+  border-right: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.strip-item:last-child { border-right: none; }
+.strip-item::after {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .5s var(--ease-out);
+}
+.strip-item:hover::after { transform: scaleX(1); }
+.strip-num {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1;
+  letter-spacing: -.02em;
+}
+.strip-num .unit { font-size: .55em; color: var(--gold); vertical-align: super; }
+.strip-label {
+  font-size: 10px; font-weight: 400;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-top: 8px;
+}
+
+/* ── SHARED LAYOUT ── */
+.section {
+  padding: 140px 80px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+.section-full {
+  padding: 140px 80px;
+}
+.section-tag {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .5em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 28px;
+  display: flex; align-items: center; gap: 16px;
+}
+.section-tag::before {
+  content: '';
+  width: 24px; height: 1px;
+  background: var(--gold);
+  flex-shrink: 0;
+}
+.h2 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 80px);
+  font-weight: 400;
+  line-height: .95;
+  letter-spacing: -.02em;
+  color: var(--text);
+}
+.h2 em { font-style: italic; color: var(--gold); }
+.body-text {
+  font-size: 16px; font-weight: 300;
+  color: var(--text-dim);
+  line-height: 1.85;
+  letter-spacing: .02em;
+}
+.divider {
+  width: 48px; height: 1px;
+  background: var(--gold);
+  opacity: .4;
+}
+
+/* ── MANIFESTO ── */
+.manifesto-wrap {
+  background: var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.manifesto-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 70% 70% at 50% 50%, rgba(45,61,40,.5) 0%, transparent 70%);
+}
+.manifesto-inner {
+  position: relative; z-index: 1;
+  max-width: 900px; margin: 0 auto;
+  text-align: center;
+  padding: 160px 40px;
+}
+.manifesto-number {
+  font-family: var(--font-display);
+  font-size: clamp(100px, 20vw, 260px);
+  font-weight: 400;
+  color: rgba(255,255,255,.03);
+  position: absolute;
+  top: 60px; left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  pointer-events: none;
+  white-space: nowrap;
+}
+.manifesto-quote {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3.5vw, 50px);
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.25;
+  margin-bottom: 48px;
+}
+.manifesto-quote span { color: var(--gold); }
+.manifesto-body {
+  font-size: 15px; font-weight: 300;
+  color: var(--text-dim); line-height: 1.9;
+  max-width: 600px; margin: 0 auto 56px;
+}
+
+/* ── ABOUT — two col ── */
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+.about-visual {
+  position: relative;
+  aspect-ratio: 3/4;
+}
+.about-card {
+  width: 100%; height: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+.about-card-bg {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(160deg, var(--green) 0%, var(--ink) 55%, var(--void) 100%);
+}
+.about-card-lines {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    -30deg,
+    transparent,
+    transparent 48px,
+    rgba(201,163,52,.04) 48px,
+    rgba(201,163,52,.04) 49px
+  );
+}
+/* Central geometric mark */
+.about-mark {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 140px; height: 140px;
+  display: flex; align-items: center; justify-content: center;
+}
+.about-mark-outer {
+  position: absolute; inset: 0;
+  border: 1px solid rgba(201,163,52,.3);
+  animation: rotateSlow 20s linear infinite;
+}
+.about-mark-mid {
+  position: absolute;
+  inset: 20px;
+  border: 1px solid rgba(201,163,52,.15);
+  animation: rotateSlow 15s linear infinite reverse;
+}
+.about-mark-letter {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--gold);
+  opacity: .8;
+  position: relative; z-index: 1;
+  font-style: italic;
+}
+@keyframes rotateSlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+/* Corner accents */
+.about-corner {
+  position: absolute;
+  width: 20px; height: 20px;
+}
+.about-corner.tl { top: 20px; left: 20px; border-top: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.about-corner.tr { top: 20px; right: 20px; border-top: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.about-corner.bl { bottom: 20px; left: 20px; border-bottom: 1px solid var(--gold); border-left: 1px solid var(--gold); }
+.about-corner.br { bottom: 20px; right: 20px; border-bottom: 1px solid var(--gold); border-right: 1px solid var(--gold); }
+.about-caption {
+  position: absolute;
+  bottom: 32px; left: 32px; right: 32px;
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(245,240,232,.7);
+  line-height: 1.4;
+  border-left: 2px solid var(--gold);
+  padding-left: 16px;
+}
+/* Offset accent frame */
+.about-frame-accent {
+  position: absolute;
+  bottom: -20px; right: -20px;
+  width: 55%; height: 55%;
+  border: 1px solid rgba(201,163,52,.15);
+  z-index: -1;
+}
+.about-content { }
+.about-pull {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.5vw, 34px);
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.35;
+  margin: 32px 0 28px;
+  border-left: 2px solid var(--gold);
+  padding-left: 24px;
+}
+
+/* ── VALUES — Nike-style full-bleed tiles ── */
+.values-intro {
+  text-align: center;
+  max-width: 700px; margin: 0 auto;
+  padding: 140px 40px 80px;
+}
+.values-tiles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: var(--border);
+}
+.tile {
+  background: var(--ink);
+  padding: 56px 48px;
+  position: relative;
+  overflow: hidden;
+  transition: background .4s;
+  min-height: 320px;
+  display: flex; flex-direction: column;
+}
+.tile:hover { background: var(--surface); }
+.tile::before {
+  content: '';
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .5s var(--ease-out);
+}
+.tile:hover::before { transform: scaleX(1); }
+.tile-index {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .4em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: auto;
+}
+.tile-body {
+  margin-top: 64px;
+}
+.tile-title {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 400;
+  color: var(--text);
+  line-height: 1.1;
+  margin-bottom: 16px;
+  letter-spacing: -.01em;
+}
+.tile-desc {
+  font-size: 13px; font-weight: 300;
+  color: var(--text-dim); line-height: 1.75;
+}
+.tile-bg-word {
+  position: absolute;
+  bottom: -8px; right: -4px;
+  font-family: var(--font-display);
+  font-size: 90px; font-weight: 400;
+  color: rgba(255,255,255,.025);
+  line-height: 1;
+  pointer-events: none;
+  transition: color .4s;
+}
+.tile:hover .tile-bg-word { color: rgba(201,163,52,.05); }
+
+/* ── CINEMATIC FULL-BLEED STATEMENT ── */
+.statement {
+  background: var(--void);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 120px 40px;
+}
+.statement-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 90% 70% at 50% 100%, rgba(40,52,36,.6) 0%, transparent 65%);
+}
+.statement-lines-v {
+  position: absolute; inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent, transparent 99px,
+    rgba(201,163,52,.03) 99px, rgba(201,163,52,.03) 100px
+  );
+}
+.statement-inner {
+  position: relative; z-index: 1;
+  text-align: center; max-width: 1000px;
+}
+.statement-h {
+  font-family: var(--font-display);
+  font-size: clamp(52px, 9vw, 130px);
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: -.03em;
+  color: var(--text);
+  margin-bottom: 48px;
+}
+.statement-h em { color: var(--gold); font-style: italic; }
+.statement-h .sm {
+  font-size: .45em;
+  font-style: italic;
+  color: var(--text-dim);
+  display: block;
+  margin-top: 8px;
+  letter-spacing: .02em;
+}
+
+/* ── FAMILY — horizontal scroll feel ── */
+.family-wrap {
+  background: var(--ink);
+  overflow: hidden;
+}
+.family-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 680px;
+}
+.family-vis {
+  position: relative;
+  background: var(--green);
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.family-vis-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(45,61,40,1) 0%, rgba(15,15,15,.9) 100%);
+}
+.family-vis-pattern {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 30% 70%, rgba(201,163,52,.15) 0%, transparent 40%);
+}
+/* Geometric family symbol */
+.family-symbol {
+  position: relative; z-index: 1;
+  display: flex; flex-direction: column;
+  align-items: center; gap: 12px;
+}
+.sym-ring {
+  border-radius: 50%;
+  border: 1px solid rgba(201,163,52,.3);
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.sym-ring::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,163,52,.12);
+}
+.sym-r1 { width: 160px; height: 160px; }
+.sym-r1::before { inset: -24px; }
+.sym-r2 { width: 100px; height: 100px; }
+.sym-r2::before { inset: -16px; }
+.sym-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: rgba(201,163,52,.9);
+  font-size: 15px;
+}
+.sym-connector {
+  width: 1px; height: 24px;
+  background: rgba(201,163,52,.25);
+}
+.family-content {
+  padding: 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.family-points {
+  margin-top: 40px;
+  display: flex; flex-direction: column; gap: 32px;
+}
+.fp {
+  display: flex; gap: 24px; align-items: flex-start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.fp:last-child { border-bottom: none; padding-bottom: 0; }
+.fp-num {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .3em; color: var(--gold);
+  min-width: 28px; padding-top: 4px;
+}
+.fp-text {
+  font-size: 14px; font-weight: 300;
+  color: var(--text-dim); line-height: 1.75;
+}
+.fp-text strong { color: var(--text); font-weight: 500; display: block; margin-bottom: 4px; }
+
+/* ── TESTIMONIALS — Apple card style ── */
+.testi-section {
+  background: var(--void);
+  padding: 140px 0;
+  overflow: hidden;
+}
+.testi-header {
+  text-align: center;
+  padding: 0 80px 80px;
+}
+.testi-track {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  padding: 0 80px;
+}
+.tcard {
+  background: var(--surface);
+  padding: 52px 44px;
+  position: relative;
+  border: 1px solid var(--border);
+  transition: border-color .4s, transform .4s var(--ease-out);
+}
+.tcard:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+}
+.tcard.featured {
+  background: var(--lift);
+  border-color: var(--border-gold);
+}
+.tcard-mark {
+  font-family: var(--font-display);
+  font-size: 64px;
+  color: var(--gold); opacity: .25;
+  line-height: .7;
+  margin-bottom: 28px;
+}
+.tcard.featured .tcard-mark { opacity: .5; }
+.tcard-text {
+  font-family: var(--font-display);
+  font-size: 18px; font-style: italic;
+  color: var(--text); line-height: 1.6;
+  margin-bottom: 36px;
+}
+.tcard-sep { width: 32px; height: 1px; background: var(--gold); opacity: .4; margin-bottom: 24px; }
+.tcard-name {
+  font-size: 13px; font-weight: 600;
+  letter-spacing: .15em; text-transform: uppercase;
+  color: var(--text); margin-bottom: 4px;
+}
+.tcard-role { font-size: 12px; color: var(--text-dim); }
+.tcard-result {
+  position: absolute; top: 24px; right: 24px;
+  background: var(--gold-dim);
+  border: 1px solid var(--border-gold);
+  border-radius: 2px;
+  padding: 6px 12px;
+  font-size: 10px; font-weight: 600;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ── IMPACT ── */
+.impact-wrap {
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.impact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.impact-left {
+  padding: 120px 80px;
+  border-right: 1px solid var(--border);
+}
+.impact-numbers {
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 48px;
+}
+.in-item {
+  padding: 36px 0;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: baseline; gap: 20px;
+}
+.in-item:last-child { border-bottom: none; }
+.in-big {
+  font-family: var(--font-display);
+  font-size: 64px; font-weight: 400;
+  color: var(--text); letter-spacing: -.03em; line-height: 1;
+}
+.in-big em { color: var(--gold); font-style: normal; }
+.in-label {
+  font-size: 13px; color: var(--text-dim);
+  letter-spacing: .05em; flex: 1;
+}
+.impact-right {
+  padding: 120px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.impact-pillars {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+  margin-top: 48px;
+}
+.ipillar {
+  background: var(--ink);
+  padding: 28px;
+  position: relative;
+  overflow: hidden;
+}
+.ipillar-bar {
+  position: absolute; top: 0; left: 0;
+  height: 2px; width: 40%;
+  background: var(--green-mid);
+}
+.ipillar.gold .ipillar-bar { background: var(--gold); width: 100%; opacity: .3; }
+.ipillar-title {
+  font-size: 13px; font-weight: 600;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text); margin: 16px 0 8px;
+}
+.ipillar-desc { font-size: 12px; color: var(--text-dim); line-height: 1.65; }
+
+/* ── COMMUNITY HERO ── */
+.community-wrap {
+  background: var(--void);
+  min-height: 92vh;
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+  padding: 120px 40px;
+}
+.comm-bg {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 80% 80% at 50% 50%, rgba(40,52,36,.35) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 40% at 20% 90%, rgba(201,163,52,.06) 0%, transparent 50%);
+}
+/* Concentric rings */
+.comm-rings {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.comm-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(201,163,52,.06);
+  top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+}
+.comm-ring:nth-child(1) { width: 300px; height: 300px; border-color: rgba(201,163,52,.12); }
+.comm-ring:nth-child(2) { width: 500px; height: 500px; }
+.comm-ring:nth-child(3) { width: 700px; height: 700px; }
+.comm-ring:nth-child(4) { width: 960px; height: 960px; border-color: rgba(201,163,52,.03); }
+.comm-ring:nth-child(5) { width: 1240px; height: 1240px; border-color: rgba(201,163,52,.02); }
+.comm-inner {
+  position: relative; z-index: 1;
+  text-align: center; max-width: 860px;
+}
+.comm-h {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 108px);
+  font-weight: 400;
+  line-height: .9;
+  letter-spacing: -.03em;
+  color: var(--text);
+  margin: 28px 0 36px;
+}
+.comm-h em { color: var(--gold); }
+.comm-perks {
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 0;
+  margin-bottom: 56px;
+}
+.comm-perk {
+  font-size: 11px; font-weight: 400;
+  letter-spacing: .25em; text-transform: uppercase;
+  color: var(--text-dim);
+  padding: 0 24px;
+  border-right: 1px solid var(--border);
+}
+.comm-perk:last-child { border-right: none; }
+
+/* ── CONTACT ── */
+.contact-wrap {
+  background: var(--ink);
+  border-top: 1px solid var(--border);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  min-height: 700px;
+}
+.contact-left {
+  padding: 100px 80px;
+  border-right: 1px solid var(--border);
+  display: flex; flex-direction: column; justify-content: center;
+}
+.contact-pull {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-style: italic; color: var(--text);
+  line-height: 1.4;
+  margin: 32px 0 24px;
+}
+.contact-info {
+  display: flex; flex-direction: column; gap: 0;
+  margin-top: 52px;
+}
+.ci {
+  padding: 20px 0;
+  border-top: 1px solid var(--border);
+  display: flex; gap: 20px; align-items: center;
+}
+.ci:last-child { border-bottom: 1px solid var(--border); }
+.ci-label {
+  font-size: 10px; font-weight: 500;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: var(--gold);
+  min-width: 90px;
+}
+.ci-val { font-size: 13px; color: var(--text-dim); }
+.contact-right {
+  padding: 100px 80px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.form { display: flex; flex-direction: column; gap: 0; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.field {
+  margin-bottom: 2px;
+}
+.field label {
+  display: block;
+  font-size: 9px; font-weight: 600;
+  letter-spacing: .45em; text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.field input, .field textarea, .field select {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  font-family: var(--font-sans);
+  font-size: 14px; font-weight: 300;
+  color: var(--text);
+  outline: none;
+  transition: border-color .3s;
+  -webkit-appearance: none;
+}
+.field input:focus, .field textarea:focus {
+  border-bottom-color: var(--gold);
+}
+.field input::placeholder, .field textarea::placeholder { color: var(--text-ghost); }
+.field textarea { height: 80px; resize: none; }
+.form-btn {
+  margin-top: 40px;
+  width: 100%;
+  background: var(--gold);
+  border: none;
+  color: var(--void);
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .3em; text-transform: uppercase;
+  padding: 18px;
+  cursor: none;
+  border-radius: 2px;
+  transition: background .25s, transform .2s;
+}
+.form-btn:hover { background: var(--gold-bright); transform: translateY(-2px); }
+.form-btn.sent { background: var(--green-mid); color: var(--text); }
+
+/* ── FOOTER ── */
+footer {
+  background: var(--void);
+  padding: 56px 80px;
+  display: flex; align-items: center; justify-content: space-between;
+  border-top: 1px solid var(--border);
+}
+.footer-brand {
+  font-family: var(--font-sans);
+  font-size: 11px; font-weight: 700;
+  letter-spacing: .35em; text-transform: uppercase;
+  color: var(--text-dim);
+}
+.footer-brand strong { color: var(--gold); }
+.footer-copy { font-size: 11px; color: var(--text-ghost); letter-spacing: .1em; }
+.footer-links { display: flex; gap: 32px; }
+.footer-links a {
+  font-size: 11px; font-weight: 400;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--text-ghost);
+  text-decoration: none;
+  transition: color .3s;
+}
+.footer-links a:hover { color: var(--gold); }
+
+/* ── SCROLL REVEAL ── */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity .9s var(--ease-out), transform .9s var(--ease-out); }
+.reveal.up { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: .1s; }
+.reveal-d2 { transition-delay: .2s; }
+.reveal-d3 { transition-delay: .3s; }
+.reveal-d4 { transition-delay: .45s; }
+.reveal-scale { opacity: 0; transform: scale(.96); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); }
+.reveal-scale.up { opacity: 1; transform: scale(1); }
+
+/* ── ANIMATIONS ── */
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  nav { padding: 0 24px; }
+  .nav-links { display: none; }
+  .section { padding: 80px 24px; }
+  .section-full { padding: 80px 24px; }
+  .about-grid { grid-template-columns: 1fr; gap: 56px; }
+  .about-visual { aspect-ratio: auto; height: 360px; }
+  .values-tiles { grid-template-columns: 1fr; }
+  .family-grid { grid-template-columns: 1fr; }
+  .family-vis { min-height: 320px; }
+  .family-content { padding: 56px 24px; }
+  .testi-track { grid-template-columns: 1fr; padding: 0 24px; }
+  .testi-header { padding: 0 24px 56px; }
+  .impact-grid { grid-template-columns: 1fr; }
+  .impact-left, .impact-right { padding: 80px 24px; }
+  .impact-left { border-right: none; border-bottom: 1px solid var(--border); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .contact-left, .contact-right { padding: 80px 24px; }
+  .contact-left { border-right: none; border-bottom: 1px solid var(--border); }
+  footer { flex-direction: column; gap: 24px; padding: 40px 24px; text-align: center; }
+  .footer-links { justify-content: center; }
+  .strip { flex-wrap: wrap; }
+  .strip-item { flex: 1 0 50%; }
+  .comm-perks { gap: 12px; }
+  .comm-perk { border-right: none; }
+  .form-row { grid-template-columns: 1fr; }
+  .manifesto-inner { padding: 100px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-brand">
+    <span class="nav-brand-top">Base Forte</span>
+    <span class="nav-brand-sub">Movimento</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">O Movimento</a></li>
+    <li><a href="#values">Pilares</a></li>
+    <li><a href="#legacy">Legado</a></li>
+    <li><a href="#community">Comunidade</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="#contact" class="nav-cta">Entrar Agora</a>
+  </div>
+</nav>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-scan"></div>
+  <div class="hero-glyph">B</div>
+  <div class="hero-horizon"></div>
+
+  <div class="hero-inner">
+    <div class="hero-eyebrow">Movimento de Evolução Masculina</div>
+    <h1 class="hero-h1">
+      <span class="break">Bases</span>
+      <em>Fortes.</em>
+    </h1>
+    <p class="hero-tagline">Disciplina. Propósito. Legado. A transformação que nunca esquecerás.</p>
+    <div class="hero-actions">
+      <a href="#community" class="btn-fill">Fazer Parte</a>
+      <a href="#about" class="btn-line">Conhecer o Movimento</a>
+    </div>
+  </div>
+
+  <div class="hero-scroll-cue">
+    <div class="scroll-pip"></div>
+    <span>Descer</span>
+  </div>
+</section>
+
+<!-- ═══ METRICS STRIP ═══ -->
+<div class="strip reveal">
+  <div class="strip-item">
+    <div class="strip-num"><span class="js-count" data-target="2000" data-suffix="+">2000+</span></div>
+    <div class="strip-label">Homens Transformados</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num"><span class="js-count" data-target="48">48</span></div>
+    <div class="strip-label">Cidades no Brasil</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num"><span class="js-count" data-target="94" data-suffix="%">94%</span></div>
+    <div class="strip-label">Impacto Familiar</div>
+  </div>
+  <div class="strip-item">
+    <div class="strip-num"><span class="js-count" data-target="3">3</span> <span style="font-size:28px;color:var(--text-dim);font-family:var(--font-display)">anos</span></div>
+    <div class="strip-label">De Movimento Real</div>
+  </div>
+</div>
+
+<!-- ═══ MANIFESTO ═══ -->
+<div class="manifesto-wrap">
+  <div class="manifesto-inner">
+    <div class="manifesto-number" aria-hidden="true">BF</div>
+    <div class="section-tag reveal" style="justify-content:center">Manifesto</div>
+    <blockquote class="manifesto-quote reveal reveal-d1">
+      "O homem que constrói a si mesmo <br>
+      <span>constrói o mundo ao redor."</span>
+    </blockquote>
+    <p class="manifesto-body reveal reveal-d2">
+      Vivemos em uma era que confundiu masculinidade com agressividade, e docilidade com fraqueza. 
+      Base Forte existe para redefinir: ser homem é ter raiz profunda, coragem silenciosa, amor ativo 
+      e propósito inabalável. É construir algo que dure além de você.
+    </p>
+    <a href="#community" class="btn-fill reveal reveal-d3">Junte-se ao Movimento</a>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ═══ -->
+<div id="about" style="background:var(--deep)">
+  <div class="section">
+    <div class="about-grid">
+      <div class="about-visual reveal">
+        <div class="about-card">
+          <div class="about-card-bg"></div>
+          <div class="about-card-lines"></div>
+          <div class="about-mark">
+            <div class="about-mark-outer"></div>
+            <div class="about-mark-mid"></div>
+            <span class="about-mark-letter">B</span>
+          </div>
+          <div class="about-corner tl"></div>
+          <div class="about-corner tr"></div>
+          <div class="about-corner bl"></div>
+          <div class="about-corner br"></div>
+          <div class="about-caption">
+            "A força que transforma começa por dentro."
+          </div>
+        </div>
+        <div class="about-frame-accent"></div>
+      </div>
+      <div class="about-content reveal reveal-d2">
+        <div class="section-tag">O Movimento</div>
+        <h2 class="h2">Um novo<br><em>padrão</em><br>de homem.</h2>
+        <blockquote class="about-pull">
+          Não basta ser forte no físico. O homem que move o mundo é forte na mente, no espírito e nas suas relações.
+        </blockquote>
+        <p class="body-text" style="margin-bottom:28px">
+          Base Forte Movimento é um espaço de evolução masculina consciente. Aqui, disciplina não é punição — é libertação. Força não é violência — é responsabilidade. Liderança não é domínio — é serviço.
+        </p>
+        <div class="divider" style="margin-bottom:28px"></div>
+        <p class="body-text">
+          Reunimos homens que buscam evoluir mental, espiritual e financeiramente — para se tornarem a melhor versão de si mesmos, para si e para os que dependem deles.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CINEMATIC STATEMENT ═══ -->
+<div class="statement">
+  <div class="statement-bg"></div>
+  <div class="statement-lines-v"></div>
+  <div class="statement-inner reveal-scale">
+    <div class="section-tag" style="justify-content:center;margin-bottom:24px">Princípio</div>
+    <h2 class="statement-h">
+      Não basta<br>
+      <em>sobreviver.</em>
+      <span class="sm">Construa algo que dure além de você.</span>
+    </h2>
+    <a href="#values" class="btn-line">Ver os Pilares</a>
+  </div>
+</div>
+
+<!-- ═══ VALUES ═══ -->
+<div id="values" style="background:var(--void)">
+  <div class="values-intro reveal">
+    <div class="section-tag" style="justify-content:center">Pilares</div>
+    <h2 class="h2" style="text-align:center;margin-bottom:24px">O que<br>nos <em>move.</em></h2>
+    <p class="body-text" style="text-align:center;max-width:540px;margin:0 auto">Cada pilar é uma pedra na fundação de uma vida que vale a pena ser vivida. Não por impulso — por escolha deliberada.</p>
+  </div>
+  <div class="values-tiles">
+    <div class="tile reveal">
+      <div class="tile-index">01 — Pilar</div>
+      <div class="tile-body">
+        <h3 class="tile-title">Disciplina</h3>
+        <p class="tile-desc">A consistência que ninguém vê é o que cria os resultados que todos admiram. Disciplina é o tributo pago à versão que você quer ser.</p>
+      </div>
+      <div class="tile-bg-word">D</div>
+    </div>
+    <div class="tile reveal reveal-d1">
+      <div class="tile-index">02 — Pilar</div>
+      <div class="tile-body">
+        <h3 class="tile-title">Propósito</h3>
+        <p class="tile-desc">Homem sem propósito é força desperdiçada. O propósito transforma esforço em legado e dias comuns em história extraordinária.</p>
+      </div>
+      <div class="tile-bg-word">P</div>
+    </div>
+    <div class="tile reveal reveal-d2">
+      <div class="tile-index">03 — Pilar</div>
+      <div class="tile-body">
+        <h3 class="tile-title">Força Emocional</h3>
+        <p class="tile-desc">Sentir é humano. Saber o que fazer com o que sente é de homem maduro. A inteligência emocional não enfraquece — ela blindagem.</p>
+      </div>
+      <div class="tile-bg-word">F</div>
+    </div>
+    <div class="tile reveal">
+      <div class="tile-index">04 — Pilar</div>
+      <div class="tile-body">
+        <h3 class="tile-title">Liderança</h3>
+        <p class="tile-desc">Liderar é servir. O homem que lidera com integridade não precisa de títulos — sua presença já organiza o que está ao redor.</p>
+      </div>
+      <div class="tile-bg-word">L</div>
+    </div>
+    <div class="tile reveal reveal-d1">
+      <div class="tile-index">05 — Pilar</div>
+      <div class="tile-body">
+        <h3 class="tile-title">Família</h3>
+        <p class="tile-desc">A família é o primeiro time que você lidera. O lar que você constrói é o mundo que seus filhos herdam. Comece por aqui.</p>
+      </div>
+      <div class="tile-bg-word">F</div>
+    </div>
+    <div class="tile reveal reveal-d2">
+      <div class="tile-index">06 — Pilar</div>
+      <div class="tile-body">
+        <h3 class="tile-title">Legado</h3>
+        <p class="tile-desc">Você existe além do seu tempo. O que você planta hoje alimentará gerações que ainda não chegaram. Plante com intenção e amor.</p>
+      </div>
+      <div class="tile-bg-word">L</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FAMILY & LEGACY ═══ -->
+<div class="family-wrap" id="legacy">
+  <div class="family-grid">
+    <div class="family-vis">
+      <div class="family-vis-bg"></div>
+      <div class="family-vis-pattern"></div>
+      <div class="family-symbol">
+        <div class="sym-ring sym-r1">
+          <span class="sym-label">Pai</span>
+        </div>
+        <div class="sym-connector"></div>
+        <div class="sym-ring sym-r2">
+          <span class="sym-label" style="font-size:12px">Família</span>
+        </div>
+      </div>
+    </div>
+    <div class="family-content reveal">
+      <div class="section-tag">Família &amp; Legado</div>
+      <h2 class="h2">Construir<br>para <em>sempre.</em></h2>
+      <div class="family-points">
+        <div class="fp">
+          <span class="fp-num">01</span>
+          <p class="fp-text"><strong>Seja o pai que você não teve.</strong> Ou honre o que você teve. A corrente muda quando um homem decide mudar — e essa decisão ecoa por gerações.</p>
+        </div>
+        <div class="fp">
+          <span class="fp-num">02</span>
+          <p class="fp-text"><strong>Presença é o maior presente.</strong> Não é o dinheiro, é a atenção plena. Não é o status, é a conexão genuína com quem você ama.</p>
+        </div>
+        <div class="fp">
+          <span class="fp-num">03</span>
+          <p class="fp-text"><strong>O legado é uma decisão diária.</strong> Cada escolha é um tijolo. Cada palavra é um fundamento. Cada ação é parte da sua obra-prima.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TESTIMONIALS ═══ -->
+<div class="testi-section">
+  <div class="testi-header reveal">
+    <div class="section-tag" style="justify-content:center">Histórias Reais</div>
+    <h2 class="h2" style="text-align:center">Transformação<br><em>em curso.</em></h2>
+  </div>
+  <div class="testi-track">
+    <div class="tcard reveal">
+      <div class="tcard-mark">"</div>
+      <p class="tcard-text">Cheguei no movimento destruído por dentro. Parecia forte por fora, mas estava completamente vazio. Hoje tenho propósito, tenho presença — tenho família de verdade.</p>
+      <div class="tcard-sep"></div>
+      <div class="tcard-name">Marcos Oliveira</div>
+      <div class="tcard-role">Empreendedor — São Paulo</div>
+    </div>
+    <div class="tcard featured reveal reveal-d1">
+      <div class="tcard-result">Em destaque</div>
+      <div class="tcard-mark">"</div>
+      <p class="tcard-text">Base Forte me ensinou que ser vulnerável não é fraqueza. É coragem. Meu casamento foi salvo. Minha relação com meu filho foi reconstruída do zero.</p>
+      <div class="tcard-sep"></div>
+      <div class="tcard-name">Rafael Santos</div>
+      <div class="tcard-role">Liderança — Belo Horizonte</div>
+    </div>
+    <div class="tcard reveal reveal-d2">
+      <div class="tcard-mark">"</div>
+      <p class="tcard-text">Nunca soube o que era disciplina de verdade até aqui. Hoje acordo diferente. Trabalho diferente. Amo diferente. Sou um homem completamente diferente.</p>
+      <div class="tcard-sep"></div>
+      <div class="tcard-name">André Ferreira</div>
+      <div class="tcard-role">Educador — Curitiba</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SOCIAL IMPACT ═══ -->
+<div class="impact-wrap">
+  <div class="impact-grid">
+    <div class="impact-left reveal">
+      <div class="section-tag">Impacto Real</div>
+      <h2 class="h2">Números<br>que <em>importam.</em></h2>
+      <div class="impact-numbers">
+        <div class="in-item">
+          <div class="in-big">2<em>K</em></div>
+          <div class="in-label">Homens alcançados com conteúdo de transformação real</div>
+        </div>
+        <div class="in-item">
+          <div class="in-big">340</div>
+          <div class="in-label">Famílias diretamente impactadas pelo movimento</div>
+        </div>
+        <div class="in-item">
+          <div class="in-big">18<em>+</em></div>
+          <div class="in-label">Ações sociais em comunidades vulneráveis do Brasil</div>
+        </div>
+      </div>
+    </div>
+    <div class="impact-right reveal reveal-d2">
+      <div class="section-tag">Como Atuamos</div>
+      <h2 class="h2" style="margin-bottom:12px">Homens que<br><em>transformam.</em></h2>
+      <p class="body-text">Quando um homem muda, sua família muda. Quando famílias mudam, bairros mudam. Esse é o efeito cascata em que acreditamos.</p>
+      <div class="impact-pillars">
+        <div class="ipillar">
+          <div class="ipillar-bar"></div>
+          <div class="ipillar-title">Mentoria</div>
+          <div class="ipillar-desc">Homens experientes guiando os que estão no início da jornada.</div>
+        </div>
+        <div class="ipillar gold">
+          <div class="ipillar-bar"></div>
+          <div class="ipillar-title">Educação</div>
+          <div class="ipillar-desc">Conteúdo prático em finanças, emoções, relações e propósito.</div>
+        </div>
+        <div class="ipillar gold">
+          <div class="ipillar-bar"></div>
+          <div class="ipillar-title">Comunidade</div>
+          <div class="ipillar-desc">Rede de apoio real entre homens que caminham juntos.</div>
+        </div>
+        <div class="ipillar">
+          <div class="ipillar-bar"></div>
+          <div class="ipillar-title">Ação Social</div>
+          <div class="ipillar-desc">Projetos que levam o movimento às periferias e escolas.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ COMMUNITY ═══ -->
+<div class="community-wrap" id="community">
+  <div class="comm-bg"></div>
+  <div class="comm-rings">
+    <div class="comm-ring"></div>
+    <div class="comm-ring"></div>
+    <div class="comm-ring"></div>
+    <div class="comm-ring"></div>
+    <div class="comm-ring"></div>
+  </div>
+  <div class="comm-inner reveal-scale">
+    <div class="section-tag" style="justify-content:center">Comunidade</div>
+    <h2 class="comm-h">Ninguém<br>cresce <em>sozinho.</em></h2>
+    <p class="body-text" style="max-width:560px;margin:0 auto 48px;text-align:center">
+      A tribo certa transforma a jornada. Aqui você encontra homens que entendem o caminho, que não julgam o passado e que caminham com você para um futuro maior.
+    </p>
+    <div class="comm-perks">
+      <span class="comm-perk">Encontros Presenciais</span>
+      <span class="comm-perk">Mentorias em Grupo</span>
+      <span class="comm-perk">Conteúdo Exclusivo</span>
+      <span class="comm-perk">Retiros e Imersões</span>
+      <span class="comm-perk">Rede de Conexões</span>
+    </div>
+    <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap">
+      <a href="#contact" class="btn-fill">Quero Fazer Parte</a>
+      <a href="#contact" class="btn-line">Falar com a Equipe</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ CONTACT ═══ -->
+<div class="contact-wrap" id="contact">
+  <div class="contact-grid">
+    <div class="contact-left reveal">
+      <div class="section-tag">Contato</div>
+      <h2 class="h2">O primeiro<br>passo é <em>seu.</em></h2>
+      <p class="about-pull" style="font-family:var(--font-display);font-size:clamp(17px,1.8vw,24px);font-style:italic;color:var(--text);line-height:1.4;margin:32px 0 24px;border-left:2px solid var(--gold);padding-left:24px">
+        "A jornada de mil léguas começa com um único passo. Este é o seu."
+      </p>
+      <p class="body-text">Pronto para começar? Fale com a gente. Seja para tirar dúvidas, conhecer o movimento ou dar o primeiro passo na sua transformação.</p>
+      <div class="contact-info">
+        <div class="ci">
+          <span class="ci-label">Email</span>
+          <span class="ci-val">contato@basefortemovimento.com.br</span>
+        </div>
+        <div class="ci">
+          <span class="ci-label">Instagram</span>
+          <span class="ci-val">@basefortemovimento</span>
+        </div>
+        <div class="ci">
+          <span class="ci-label">WhatsApp</span>
+          <span class="ci-val">+55 (11) 9 0000-0000</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right reveal reveal-d2">
+      <div class="section-tag">Enviar Mensagem</div>
+      <div class="form">
+        <div class="form-row">
+          <div class="field">
+            <label>Nome</label>
+            <input type="text" placeholder="Seu nome completo">
+          </div>
+          <div class="field">
+            <label>Cidade</label>
+            <input type="text" placeholder="Sua cidade">
+          </div>
+        </div>
+        <div class="field" style="margin-top:2px">
+          <label>Email</label>
+          <input type="email" placeholder="seu@email.com">
+        </div>
+        <div class="field" style="margin-top:2px">
+          <label>WhatsApp</label>
+          <input type="tel" placeholder="+55 (XX) 9 XXXX-XXXX">
+        </div>
+        <div class="field" style="margin-top:2px">
+          <label>Por que quer entrar no movimento?</label>
+          <textarea placeholder="Conte um pouco sobre você e o que busca…"></textarea>
+        </div>
+        <button class="form-btn" id="form-btn">Enviar Mensagem</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer>
+  <div class="footer-brand"><strong>Base Forte</strong> &nbsp;—&nbsp; Movimento</div>
+  <div class="footer-copy">© 2024 Base Forte Movimento · Bases fortes criam vidas fortes.</div>
+  <div class="footer-links">
+    <a href="#about">Sobre</a>
+    <a href="#values">Pilares</a>
+    <a href="#community">Comunidade</a>
+    <a href="#contact">Contato</a>
+  </div>
+</footer>
+
+<script>
+/* ── CURSOR ── */
+const cur = document.getElementById('cur');
+const ring = document.getElementById('cur-ring');
+let mx = 0, my = 0, rx = 0, ry = 0;
+
+document.addEventListener('mousemove', e => {
+  mx = e.clientX; my = e.clientY;
+  cur.style.left = mx + 'px';
+  cur.style.top  = my + 'px';
+});
+
+;(function loop() {
+  rx += (mx - rx) * .1;
+  ry += (my - ry) * .1;
+  ring.style.left = rx + 'px';
+  ring.style.top  = ry + 'px';
+  requestAnimationFrame(loop);
+})();
+
+document.querySelectorAll('a, button, .tile, .tcard, .strip-item').forEach(el => {
+  el.addEventListener('mouseenter', () => document.body.classList.add('hovering'));
+  el.addEventListener('mouseleave', () => document.body.classList.remove('hovering'));
+});
+
+/* ── NAV SOLID ── */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('solid', window.scrollY > 60);
+}, { passive: true });
+
+/* ── SCROLL REVEAL ── */
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('up'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -56px 0px' });
+
+document.querySelectorAll('.reveal, .reveal-scale').forEach(el => io.observe(el));
+
+/* ── COUNTER ANIMATION ── */
+const counterIO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.querySelectorAll('.js-count').forEach(el => {
+      const target = +el.dataset.target;
+      const suffix = el.dataset.suffix || '';
+      const dur = 1800;
+      let start = null;
+      const step = ts => {
+        if (!start) start = ts;
+        const p = Math.min((ts - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        const val = Math.round(eased * target);
+        el.textContent = val.toLocaleString('pt-BR') + suffix;
+        if (p < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    });
+    counterIO.unobserve(e.target);
+  });
+}, { threshold: 0.5 });
+const strip = document.querySelector('.strip');
+if (strip) counterIO.observe(strip);
+
+/* ── SMOOTH SCROLL ── */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href');
+    const el = document.querySelector(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+  });
+});
+
+/* ── FORM SUBMIT ── */
+document.getElementById('form-btn').addEventListener('click', function() {
+  this.textContent = 'Mensagem Enviada ✓';
+  this.classList.add('sent');
+  setTimeout(() => {
+    this.textContent = 'Enviar Mensagem';
+    this.classList.remove('sent');
+  }, 3500);
+});
+
+/* ── PARALLAX HERO GLYPH ── */
+const glyph = document.querySelector('.hero-glyph');
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (glyph && y < window.innerHeight) {
+    glyph.style.transform = `translate(-48%, calc(-52% + ${y * .25}px))`;
+  }
+}, { passive: true });
+</script>
+</body>
+</html>
